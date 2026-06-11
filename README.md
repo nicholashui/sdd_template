@@ -2,7 +2,7 @@
 
 Executable starter for downloading, auditing, curating, and syncing AI coding-agent harness sources.
 
-Supported agents: **Claude Code, Codex, Gemini CLI, Cursor, OpenCode, Grok Build, GitHub Copilot**.
+Supported agents: **Claude Code, Codex, Gemini CLI, Cursor, OpenCode, Grok Build, GitHub Copilot, Kiro, CodeBuddy, Trae, VS Code (Copilot), Zed, Qwen Code**.
 
 ## Quick start
 

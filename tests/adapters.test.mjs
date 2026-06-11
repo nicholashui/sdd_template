@@ -9,8 +9,28 @@ import gemini from '../scripts/adapters/gemini.mjs';
 import opencode from '../scripts/adapters/opencode.mjs';
 import grokBuild from '../scripts/adapters/grok-build.mjs';
 import copilot from '../scripts/adapters/copilot.mjs';
+import kiro from '../scripts/adapters/kiro.mjs';
+import codebuddy from '../scripts/adapters/codebuddy.mjs';
+import trae from '../scripts/adapters/trae.mjs';
+import vscode from '../scripts/adapters/vscode.mjs';
+import zed from '../scripts/adapters/zed.mjs';
+import qwen from '../scripts/adapters/qwen.mjs';
 
-const ADAPTERS = [claude, cursor, codex, gemini, opencode, grokBuild, copilot];
+const ADAPTERS = [
+  claude,
+  cursor,
+  codex,
+  gemini,
+  opencode,
+  grokBuild,
+  copilot,
+  kiro,
+  codebuddy,
+  trae,
+  vscode,
+  zed,
+  qwen,
+];
 
 const ctx = {
   projectName: 'sdd_template',
@@ -62,4 +82,29 @@ test('claude and gemini emit valid JSON settings', () => {
   const geminiFiles = gemini.generate(ctx);
   const gset = geminiFiles.find((f) => f.path === '.gemini/settings.json');
   assert.doesNotThrow(() => JSON.parse(gset.content));
+});
+
+test('JSON-emitting adapters produce parseable settings', () => {
+  const jsonOutputs = [
+    [kiro, '.kiro/settings/mcp.json'],
+    [vscode, '.vscode/settings.json'],
+    [zed, '.zed/settings.json'],
+  ];
+  for (const [adapter, path] of jsonOutputs) {
+    const file = adapter.generate(ctx).find((f) => f.path === path);
+    assert.ok(file, `${adapter.id} did not emit ${path}`);
+    assert.doesNotThrow(() => JSON.parse(file.content), `${path} is not valid JSON`);
+  }
+});
+
+test('kiro steering file uses inclusion:auto frontmatter', () => {
+  const steering = kiro.generate(ctx).find((f) => f.path.startsWith('.kiro/steering/'));
+  assert.ok(steering, 'kiro did not emit a steering file');
+  assert.ok(steering.content.startsWith('---\n'), 'steering missing frontmatter');
+  assert.ok(steering.content.includes('inclusion: auto'), 'steering missing inclusion:auto');
+});
+
+test('adapter ids are unique', () => {
+  const ids = ADAPTERS.map((a) => a.id);
+  assert.equal(new Set(ids).size, ids.length, 'duplicate adapter id detected');
 });

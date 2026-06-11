@@ -16,6 +16,12 @@ sdd_template generates configuration for the following coding agents from a sing
 | OpenCode | `AGENTS.md`, `.opencode/instructions.md` |
 | Grok Build | `AGENTS.md`, `.grok/instructions.md` |
 | GitHub Copilot | `.github/copilot-instructions.md` |
+| Kiro | `.kiro/steering/sdd_template.md`, `.kiro/settings/mcp.json` |
+| CodeBuddy | `.codebuddy/rules/sdd_template.md` |
+| Trae | `.trae/rules/project_rules.md` |
+| VS Code (Copilot) | `.vscode/settings.json` |
+| Zed | `.zed/settings.json` |
+| Qwen Code | `QWEN.md` |
 
 ## Policy
 

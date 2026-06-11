@@ -33,9 +33,19 @@ committed). Commit metadata is recorded in `sources/source-lock.json`.
 
 - `sources/source-lock.json`
 - `docs/source-audit.md`
-- Agent configs via `npm run sync`: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`,
-  `.cursor/`, `.claude/`, `.codex/`, `.gemini/`, `.opencode/`, `.grok/`,
-  `.github/copilot-instructions.md`, `docs/agents.md`.
+- Agent configs via `npm run sync` (13 agents, 18 files): `AGENTS.md`,
+  `CLAUDE.md`, `GEMINI.md`, `QWEN.md`, `.cursor/`, `.claude/`, `.codex/`,
+  `.gemini/`, `.opencode/`, `.grok/`, `.github/copilot-instructions.md`,
+  `.kiro/steering/` + `.kiro/settings/mcp.json`, `.codebuddy/rules/`,
+  `.trae/rules/project_rules.md`, `.vscode/settings.json`, `.zed/settings.json`,
+  `docs/agents.md`.
+
+### Supported agents
+
+Claude Code, OpenAI Codex, Gemini CLI, Cursor, OpenCode, Grok Build, GitHub
+Copilot, Kiro, CodeBuddy, Trae, VS Code (Copilot), Zed, and Qwen Code. The agent
+surface mirrors the configurations shipped by the upstream `ecc`
+(Everything Claude Code) source.
 
 ### Audit notes
 

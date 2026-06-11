@@ -3,7 +3,7 @@
   "version": "1.1.0-merged-bootstrap",
   "private": true,
   "type": "module",
-  "description": "Executable starter repo for downloading, auditing, curating, and syncing AI coding-agent harness sources (Claude Code, Codex, Gemini CLI, Cursor, OpenCode, Grok Build, GitHub Copilot).",
+  "description": "Executable starter repo for downloading, auditing, curating, and syncing AI coding-agent harness sources (Claude Code, Codex, Gemini CLI, Cursor, OpenCode, Grok Build, GitHub Copilot, Kiro, CodeBuddy, Trae, VS Code, Zed, Qwen Code).",
   "scripts": {
     "bootstrap": "node scripts/project-starter.mjs bootstrap",
     "create": "node scripts/project-starter.mjs create",
