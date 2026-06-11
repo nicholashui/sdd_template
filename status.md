@@ -6,15 +6,6 @@ Bootstrap complete.
 
 ## Latest update
 
-Re-audited against `project_starter.md` and the upstream `affaan-m/ecc`
-reference, then re-ran `npm run bootstrap` successfully on 2026-06-11
-(Node v22.22.3, git 2.50.1). Generated artifacts (`sources/source-lock.json`,
-`docs/source-audit.md`) were refreshed to current upstream commits — `ecc` is
-now pinned at `fec84fc`. The structure, manifests, and agent surface were
-verified consistent with both the spec and the ecc reference, and the 18
-generated agent-config files are byte-identical to a fresh `npm run sync`
-(no drift).
-
 ### Pipeline results
 
 | Step | Result |
@@ -22,9 +13,6 @@ generated agent-config files are byte-identical to a fresh `npm run sync`
 | doctor | pass |
 | sources:download | pass |
 | sources:audit | pass |
-| security | pass (1 advisory) |
-| sync --dry-run | pass |
-| test | pass (22/22) |
 
 ### Sources
 
@@ -40,12 +28,16 @@ committed). Commit metadata is recorded in `sources/source-lock.json`.
 
 - `sources/source-lock.json`
 - `docs/source-audit.md`
+- `knowledge/manifest.json`, `knowledge/INDEX.md`, `knowledge/README.md`,
+  `knowledge/NOTICE.md` plus the vendored `knowledge/skills/`,
+  `knowledge/agents/`, `knowledge/commands/`, `knowledge/references/` trees.
 - Agent configs via `npm run sync` (13 agents, 18 files): `AGENTS.md`,
   `CLAUDE.md`, `GEMINI.md`, `QWEN.md`, `.cursor/`, `.claude/`, `.codex/`,
   `.gemini/`, `.opencode/`, `.grok/`, `.github/copilot-instructions.md`,
   `.kiro/steering/` + `.kiro/settings/mcp.json`, `.codebuddy/rules/`,
   `.trae/rules/project_rules.md`, `.vscode/settings.json`, `.zed/settings.json`,
-  `docs/agents.md`.
+  `docs/agents.md`. Every agent file embeds the same generated "Knowledge Base"
+  catalog pointing at `knowledge/INDEX.md`.
 
 ### Supported agents
 

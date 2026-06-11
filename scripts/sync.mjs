@@ -24,6 +24,7 @@ import {
   END_MARK,
 } from './lib/markers.mjs';
 import { header, ok, warn, info, step, summary, line } from './lib/report.mjs';
+import { loadKnowledgeManifest, buildKnowledgeSection } from './lib/knowledge.mjs';
 
 import claude from './adapters/claude.mjs';
 import cursor from './adapters/cursor.mjs';
@@ -120,6 +121,13 @@ function buildDocsAgents(projectName) {
     + '## Policy\n\n'
     + 'Downloaded upstream sources are reference material until audited in '
     + '`docs/source-audit.md`. They are never imported or executed automatically.\n\n'
+    + '## Shared knowledge base\n\n'
+    + 'A curated, audited corpus of skills, agents, and commands is vendored under '
+    + '`knowledge/` and projected into every agent above via a generated '
+    + '"Knowledge Base" section, so all agents share the same playbook. See '
+    + '`knowledge/INDEX.md` for the full catalog and `knowledge/NOTICE.md` for '
+    + 'provenance and license. Regenerate with `npm run knowledge:import` then '
+    + '`npm run sync`.\n\n'
     + '## Validation\n\n'
     + '```bash\n'
     + 'npm run doctor\n'
@@ -133,7 +141,11 @@ function buildDocsAgents(projectName) {
 }
 
 export function planSync(projectName) {
-  const rulesText = loadRulesText() || '_No rules defined yet. Add files under `rules/`._';
+  const baseRules = loadRulesText() || '_No rules defined yet. Add files under `rules/`._';
+  const knowledgeSection = buildKnowledgeSection(loadKnowledgeManifest());
+  const rulesText = knowledgeSection
+    ? `${baseRules}\n\n---\n\n${knowledgeSection}`
+    : baseRules;
   const ctx = { projectName, rulesText };
 
   const outputs = [];

@@ -5,7 +5,7 @@ Run: npm run sources:audit
 
 # Source Audit
 
-Generated: 2026-06-11T10:12:58.730Z
+
 
 This audit records the trust status of each downloaded upstream source. Downloaded sources are untrusted reference material until reviewed here and are never imported or executed automatically.
 
