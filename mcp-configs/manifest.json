@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "description": "MCP server configuration profiles. The minimal profile is enabled by default; optional servers require human approval before enabling.",
+  "profiles": [
+    { "id": "minimal", "file": "minimal.json", "enabled": true, "purpose": "Smallest safe set of MCP servers." }
+  ],
+  "optional_dir": "optional",
+  "policy": "MCP servers requiring credentials or broad filesystem/network access are opt-in and require human approval (rules/60-human-approval.md)."
+}

@@ -1,0 +1,5 @@
+{
+  "schema_version": "1.0",
+  "description": "First-party hook definitions. Hooks from downloaded sources are never enabled automatically and require human approval (see rules/60-human-approval.md).",
+  "hooks": []
+}

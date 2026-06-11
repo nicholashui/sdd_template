@@ -1,0 +1,5 @@
+{
+  "_note": "Minimal MCP profile. No servers are enabled by default. Add servers deliberately and scope their access narrowly.",
+  "schema_version": "1.0",
+  "mcpServers": {}
+}

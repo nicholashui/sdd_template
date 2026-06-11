@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "description": "Curated skill categories. Skills are first-party, audited capabilities. Nothing here is auto-imported from downloaded sources.",
+  "categories": [
+    { "id": "planning", "dir": "planning", "purpose": "Decompose work, write specs, and plan tasks before coding." },
+    { "id": "implementation", "dir": "implementation", "purpose": "Make surgical, well-scoped code changes." },
+    { "id": "testing", "dir": "testing", "purpose": "Author and run deterministic tests." },
+    { "id": "review", "dir": "review", "purpose": "Self-review changes for correctness and security." },
+    { "id": "security", "dir": "security", "purpose": "Static checks for secrets, install hooks, and risky MCP configs." },
+    { "id": "memory", "dir": "memory", "purpose": "Persist project context and handoffs." },
+    { "id": "lifecycle", "dir": "lifecycle", "purpose": "Bootstrap, sync, and maintenance workflows." }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "description": "Ordered list of shared agent rules composed into generated agent-config files by `npm run sync`.",
+  "rules": [
+    { "file": "00-constitution.md", "title": "Constitution", "order": 0 },
+    { "file": "10-karpathy.md", "title": "Karpathy-Style Agent Rules", "order": 10 },
+    { "file": "20-sdd.md", "title": "Spec-Driven Development", "order": 20 },
+    { "file": "30-security.md", "title": "Security", "order": 30 },
+    { "file": "40-testing.md", "title": "Testing", "order": 40 },
+    { "file": "50-token-efficiency.md", "title": "Token Efficiency", "order": 50 },
+    { "file": "60-human-approval.md", "title": "Human Approval", "order": 60 }
+  ]
+}
