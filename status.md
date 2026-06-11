@@ -6,11 +6,6 @@ Bootstrap complete.
 
 ## Latest update
 
-`npm run bootstrap` ran successfully on 2026-06-11 (Node v22.22.3, git 2.50.1).
-Shared knowledge base imported from `external/sources/ecc` @ `fec84fc` (MIT):
-**262 skills · 64 agents · 84 commands** vendored under `knowledge/`, with
-54 non-text/unsafe files correctly skipped.
-
 ### Pipeline results
 
 | Step | Result |
@@ -18,10 +13,6 @@ Shared knowledge base imported from `external/sources/ecc` @ `fec84fc` (MIT):
 | doctor | pass |
 | sources:download | pass |
 | sources:audit | pass |
-| security | pass (1 advisory: ecc `postinstall`, never executed) |
-| knowledge:import | pass (262 skills, 64 agents, 84 commands) |
-| sync --dry-run | pass |
-| test | pass (30/30) |
 
 ### Sources
 

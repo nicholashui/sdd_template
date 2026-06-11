@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.2.0-shared-knowledge — 2026-06-11
+
 
 - **New: shared knowledge base.** Vendored ECC's audited corpus under
   `knowledge/` so every supported coding agent works from the same playbook
