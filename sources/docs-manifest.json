@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "docs": [
+    {
+      "id": "claude-code-docs",
+      "name": "Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/features-overview",
+      "target": "external/docs/claude-code-features-overview.md",
+      "enabled": true,
+      "purpose": "Claude Code feature loading: CLAUDE.md, skills, MCP, subagents, hooks."
+    },
+    {
+      "id": "cursor-rules-docs",
+      "name": "Cursor Rules Docs",
+      "url": "https://docs.cursor.com/context/rules-for-ai",
+      "target": "external/docs/cursor-rules.md",
+      "enabled": true,
+      "purpose": "Cursor project rules, AGENTS.md support, and .cursorrules legacy behavior."
+    },
+    {
+      "id": "xai-grok-build-docs",
+      "name": "xAI Grok Build Docs",
+      "url": "https://docs.x.ai/build/overview",
+      "target": "external/docs/xai-grok-build-overview.md",
+      "enabled": true,
+      "purpose": "Grok Build install, TUI, headless mode, ACP, skills, plugins, hooks, and MCP references."
+    },
+    {
+      "id": "github-copilot-custom-instructions-docs",
+      "name": "GitHub Copilot Custom Instructions Docs",
+      "url": "https://docs.github.com/en/copilot",
+      "target": "external/docs/github-copilot-docs.md",
+      "enabled": true,
+      "purpose": "GitHub Copilot custom instructions and coding-agent workflow references."
+    },
+    {
+      "id": "modelcontextprotocol-docs",
+      "name": "Model Context Protocol Docs",
+      "url": "https://modelcontextprotocol.io",
+      "target": "external/docs/modelcontextprotocol.md",
+      "enabled": true,
+      "purpose": "MCP concepts, protocol docs, client/server design, and safety references."
+    }
+  ]
+}

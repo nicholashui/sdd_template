@@ -1,0 +1,211 @@
+#!/usr/bin/env node
+// source-audit.mjs
+// Read sources/manifest.json + sources/source-lock.json and generate
+// docs/source-audit.md, one section per source, with safety determinations.
+
+import process from 'node:process';
+import { pathToFileURL } from 'node:url';
+
+import {
+  exists,
+  readJson,
+  writeText,
+  listDir,
+  readText,
+} from './lib/fs-safe.mjs';
+import { loadManifest, LOCK_PATH } from './lib/manifest.mjs';
+import { header, ok, warn, fail, info } from './lib/report.mjs';
+
+const AUDIT_OUTPUT = 'docs/source-audit.md';
+
+// Sources explicitly allowed for curated extraction after license check.
+const CURATION_ALLOWLIST = new Set(['andrej-karpathy-skills']);
+
+/**
+ * Determine whether a source is safe for automatic import, with reasons.
+ * Implements spec section 9.1.
+ */
+export function assessSafety(src, lockEntry) {
+  const reasons = [];
+  const status = lockEntry ? lockEntry.status : 'unknown';
+  const licenseFiles = (lockEntry && lockEntry.license_files) || [];
+
+  if (src.priority === 'archived' || src.tier === 'historical') {
+    reasons.push('source is archived/historical');
+  }
+  if (src.import_policy === 'never-import') {
+    reasons.push('import_policy is never-import');
+  }
+  if (licenseFiles.length === 0 && status === 'downloaded') {
+    reasons.push('no license file detected');
+  }
+  if (src.quarantine === true) {
+    reasons.push('source is quarantined (reference-only / unaudited)');
+  }
+  if (src.import_policy === 'reference-only') {
+    reasons.push('import_policy is reference-only');
+  }
+
+  // Inspect for risky root-level install behavior (static only).
+  const risky = detectRiskyRootScripts(src.target);
+  for (const r of risky) reasons.push(r);
+
+  const safe = reasons.length === 0;
+  return { safe, reasons, risky };
+}
+
+function detectRiskyRootScripts(targetRel) {
+  const findings = [];
+  if (!exists(targetRel)) return findings;
+  const entries = listDir(targetRel);
+
+  // Look at package.json scripts for postinstall/preinstall/install hooks.
+  if (entries.includes('package.json')) {
+    try {
+      const pkg = readJson(`${targetRel}/package.json`);
+      const scripts = pkg.scripts || {};
+      for (const hook of ['preinstall', 'install', 'postinstall']) {
+        if (scripts[hook]) {
+          findings.push(`package.json defines a "${hook}" script`);
+        }
+      }
+    } catch {
+      // ignore parse errors in untrusted source
+    }
+  }
+
+  // Look for shell installers at the repo root.
+  const installerNames = entries.filter((e) => /^(install|setup|bootstrap)\.(sh|bash|ps1)$/i.test(e));
+  for (const name of installerNames) {
+    findings.push(`root-level installer script present: ${name}`);
+    try {
+      const body = readText(`${targetRel}/${name}`);
+      if (/curl\s+[^|]*\|\s*(sudo\s+)?(ba)?sh/i.test(body) || /iwr\s+.*\|\s*iex/i.test(body)) {
+        findings.push(`installer ${name} contains a remote pipe-to-shell pattern`);
+      }
+    } catch {
+      // ignore
+    }
+  }
+
+  return findings;
+}
+
+function selectedComponents(src) {
+  if (CURATION_ALLOWLIST.has(src.id)) {
+    return 'rule files eligible for curated extraction after license verification';
+  }
+  return 'none yet';
+}
+
+function rejectedComponents(src) {
+  if (CURATION_ALLOWLIST.has(src.id)) {
+    return 'bulk import rejected; only specific rule files may be curated';
+  }
+  return 'bulk import rejected until human review';
+}
+
+function renderSection(src, lockEntry) {
+  const le = lockEntry || {};
+  const { safe, reasons } = assessSafety(src, lockEntry);
+  const securityNotes = safe
+    ? 'No automatic blockers detected; still requires human approval before import.'
+    : `Unsafe for automatic import: ${reasons.join('; ')}.`;
+
+  const lines = [];
+  lines.push(`## ${src.id}`);
+  lines.push('');
+  lines.push(`- Name: ${src.name}`);
+  lines.push(`- URL: ${src.url}`);
+  lines.push(`- Target: ${src.target}`);
+  lines.push(`- Status: ${le.status || 'not-downloaded'}`);
+  lines.push(`- Commit: ${le.commit || 'n/a'}`);
+  lines.push(`- Branch: ${le.branch || 'n/a'}`);
+  lines.push(`- License files: ${(le.license_files || []).join(', ') || 'none detected'}`);
+  lines.push(`- Package files: ${(le.package_files || []).join(', ') || 'none detected'}`);
+  lines.push(`- Priority: ${src.priority}`);
+  lines.push(`- Tier: ${src.tier}`);
+  lines.push(`- Quarantine: ${src.quarantine === true ? 'yes' : 'no'}`);
+  lines.push(`- Import policy: ${src.import_policy}`);
+  lines.push(`- Purpose: ${src.purpose}`);
+  lines.push(`- Selected components: ${selectedComponents(src)}`);
+  lines.push(`- Rejected components: ${rejectedComponents(src)}`);
+  lines.push(`- Safe for automatic import: ${safe ? 'yes' : 'no'}`);
+  lines.push(`- Security notes: ${securityNotes}`);
+  lines.push('');
+  return lines.join('\n');
+}
+
+export function buildAudit(manifest, lock) {
+  const lockById = new Map((lock.sources || []).map((s) => [s.id, s]));
+  const now = new Date().toISOString();
+
+  const head = [];
+  head.push('<!-- AUTO-GENERATED by sdd_template. Do not edit directly.');
+  head.push('Source: sources/manifest.json, sources/source-lock.json');
+  head.push('Run: npm run sources:audit');
+  head.push('-->');
+  head.push('');
+  head.push('# Source Audit');
+  head.push('');
+  head.push(`Generated: ${now}`);
+  head.push('');
+  head.push(
+    'This audit records the trust status of each downloaded upstream source. '
+    + 'Downloaded sources are untrusted reference material until reviewed here and '
+    + 'are never imported or executed automatically.',
+  );
+  head.push('');
+
+  const total = manifest.sources.length;
+  const downloaded = (lock.sources || []).filter((s) => s.status === 'downloaded' || s.status === 'present').length;
+  const failed = (lock.failures || []).length;
+
+  head.push('## Summary');
+  head.push('');
+  head.push(`- Sources in manifest: ${total}`);
+  head.push(`- Downloaded/present: ${downloaded}`);
+  head.push(`- Failed: ${failed}`);
+  head.push('');
+  head.push('---');
+  head.push('');
+
+  const sections = manifest.sources.map((src) => renderSection(src, lockById.get(src.id)));
+
+  return `${head.join('\n')}${sections.join('\n')}`;
+}
+
+export function runAudit() {
+  header('sdd_template sources:audit');
+
+  const manifest = loadManifest();
+  let lock = { sources: [], failures: [] };
+  if (exists(LOCK_PATH)) {
+    lock = readJson(LOCK_PATH);
+    ok(`loaded ${LOCK_PATH}`);
+  } else {
+    warn(`${LOCK_PATH} not found; auditing manifest only (run sources:download first)`);
+  }
+
+  const content = buildAudit(manifest, lock);
+  writeText(AUDIT_OUTPUT, content);
+  ok(`wrote ${AUDIT_OUTPUT}`);
+
+  const unsafe = manifest.sources.filter((src) => {
+    const le = (lock.sources || []).find((s) => s.id === src.id);
+    return !assessSafety(src, le).safe;
+  }).length;
+  info(`${unsafe} source(s) flagged as not safe for automatic import`);
+
+  return { code: 0 };
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  try {
+    const { code } = runAudit();
+    process.exit(code);
+  } catch (err) {
+    fail(err.message);
+    process.exit(1);
+  }
+}

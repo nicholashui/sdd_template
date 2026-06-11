@@ -1,0 +1,26 @@
+{
+  "name": "sdd_template",
+  "version": "1.1.0-merged-bootstrap",
+  "private": true,
+  "type": "module",
+  "description": "Executable starter repo for downloading, auditing, curating, and syncing AI coding-agent harness sources (Claude Code, Codex, Gemini CLI, Cursor, OpenCode, Grok Build, GitHub Copilot).",
+  "scripts": {
+    "bootstrap": "node scripts/project-starter.mjs bootstrap",
+    "create": "node scripts/project-starter.mjs create",
+    "init": "node scripts/project-starter.mjs init",
+    "doctor": "node scripts/doctor.mjs",
+    "sources:download": "node scripts/source-download.mjs",
+    "sources:update": "node scripts/source-download.mjs --update",
+    "sources:check": "node scripts/source-download.mjs --check",
+    "sources:audit": "node scripts/source-audit.mjs",
+    "sync": "node scripts/sync.mjs",
+    "sync:check": "node scripts/sync.mjs --check",
+    "security": "node scripts/security.mjs",
+    "review": "node scripts/review.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "format": "node scripts/project-starter.mjs format"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

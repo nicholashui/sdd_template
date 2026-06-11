@@ -1,0 +1,57 @@
+# Status
+
+## Current phase
+
+Bootstrap complete.
+
+## Latest update
+
+`npm run bootstrap` ran successfully on 2026-06-11 (Node v22.22.3, git 2.50.1).
+
+### Pipeline results
+
+| Step | Result |
+|---|---|
+| doctor | pass |
+| sources:download | pass |
+| sources:audit | pass |
+| security | pass |
+| sync --dry-run | pass |
+| test | pass (19/19) |
+
+### Sources
+
+- Enabled sources in manifest: 26 (plus 1 disabled archived source = 27 total).
+- Downloaded: 26
+- Failed: 0
+- Skipped (disabled): 1 (`modelcontextprotocol-servers-archived`)
+
+Downloaded repositories are in `external/sources/` and are git-ignored (not
+committed). Commit metadata is recorded in `sources/source-lock.json`.
+
+### Generated artifacts
+
+- `sources/source-lock.json`
+- `docs/source-audit.md`
+- Agent configs via `npm run sync`: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`,
+  `.cursor/`, `.claude/`, `.codex/`, `.gemini/`, `.opencode/`, `.grok/`,
+  `.github/copilot-instructions.md`, `docs/agents.md`.
+
+### Audit notes
+
+7 sources have no detected license file and are flagged as not safe for automatic
+import (`anthropic-skills`, `andrej-karpathy-skills`,
+`andrej-karpathy-skills-cursor-vscode`, `vercel-agent-skills`,
+`itgoyo-awesome-agent-skills`, `itgoyo-awesome-claude-code-skills`,
+`subinium-awesome-claude-code`). All quarantined/reference-only sources also
+remain unsafe for automatic import pending human review. See `docs/source-audit.md`.
+
+## Blockers
+
+None. Network was available; all enabled sources downloaded successfully.
+
+## Commands to run
+
+```bash
+npm run bootstrap
+```
