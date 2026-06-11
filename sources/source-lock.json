@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-06-11T05:18:27.827Z",
+  "generated_at": "2026-06-11T13:16:13.651Z",
   "profile": "all",
   "download_root": "external/sources",
   "sources": [
@@ -11,10 +11,10 @@
       "resolved_url": "https://github.com/affaan-m/ECC.git",
       "target": "external/sources/ecc",
       "status": "downloaded",
-      "commit": "e4a0062d9b5806a7053a70c35116c9f371f4b5ce",
+      "commit": "fec84fcf19d1806232b21e38a80ac9fb595442dc",
       "branch": "main",
-      "last_commit_at": "2026-06-11T01:01:28-04:00",
-      "last_commit_subject": "docs(zh-CN): translate ecc-guide and parallel-execution-optimizer skills (#2217)",
+      "last_commit_at": "2026-06-11T01:41:43-04:00",
+      "last_commit_subject": "chore(deps): bump rusqlite from 0.32.1 to 0.40.1 in /ecc2 (#2211)",
       "license_files": [
         "LICENSE"
       ],
@@ -36,9 +36,9 @@
       "resolved_url": "https://github.com/anthropics/claude-code.git",
       "target": "external/sources/anthropic-claude-code",
       "status": "downloaded",
-      "commit": "ca34f27543215fa4212872401dff00ba0ff0a034",
+      "commit": "3a7c736101edbd00426fce4615e80b937f6467df",
       "branch": "main",
-      "last_commit_at": "2026-06-10T20:44:09Z",
+      "last_commit_at": "2026-06-11T05:41:48Z",
       "last_commit_subject": "chore: Update CHANGELOG.md and feed.xml",
       "license_files": [
         "LICENSE.md"
@@ -58,10 +58,10 @@
       "resolved_url": "https://github.com/anthropics/claude-code-action.git",
       "target": "external/sources/anthropic-claude-code-action",
       "status": "downloaded",
-      "commit": "eee73e2ae5399c561de4ff038aa7b36a7aa991a7",
+      "commit": "0f97b95b6536c26e5f6bd90faec370d41695beca",
       "branch": "main",
-      "last_commit_at": "2026-06-10T21:01:40Z",
-      "last_commit_subject": "chore: bump Claude Code to 2.1.172 and Agent SDK to 0.3.172",
+      "last_commit_at": "2026-06-11T05:43:00Z",
+      "last_commit_subject": "chore: bump Claude Code to 2.1.173 and Agent SDK to 0.3.173",
       "license_files": [
         "LICENSE"
       ],
@@ -124,10 +124,10 @@
       "resolved_url": "https://github.com/openai/codex.git",
       "target": "external/sources/openai-codex",
       "status": "downloaded",
-      "commit": "598125109dd2e098486884d8fb563ebe90bc24da",
+      "commit": "273a4aa4f2474b9d27a2654f5803d51f65ce3f43",
       "branch": "main",
-      "last_commit_at": "2026-06-10T21:17:32-07:00",
-      "last_commit_subject": "image: preserve metadata when resizing prompt images (#27266)",
+      "last_commit_at": "2026-06-11T10:07:19Z",
+      "last_commit_subject": "core: enable remote compaction v2 by default (#27573)",
       "license_files": [
         "LICENSE"
       ],
@@ -172,10 +172,10 @@
       "resolved_url": "https://github.com/anomalyco/opencode.git",
       "target": "external/sources/opencode",
       "status": "downloaded",
-      "commit": "bf05e8a1224d6560f7a441f70d09e0c77e50e931",
+      "commit": "318dbe93ba9293708873a308729e02ec18707812",
       "branch": "dev",
-      "last_commit_at": "2026-06-10T23:12:02-05:00",
-      "last_commit_subject": "fix(mcp): preserve headers during auth and debug (#31802)",
+      "last_commit_at": "2026-06-11T07:42:21Z",
+      "last_commit_subject": "chore: update nix node_modules hashes",
       "license_files": [
         "LICENSE"
       ],
@@ -380,10 +380,10 @@
       "resolved_url": "https://github.com/shanraisshan/claude-code-best-practice.git",
       "target": "external/sources/claude-code-best-practice",
       "status": "downloaded",
-      "commit": "245e8a0ef1122dd21ac856c5571ebad129b8899b",
+      "commit": "ef3195a6f4b521ae32171270be6ab10267559e1d",
       "branch": "main",
-      "last_commit_at": "2026-06-11T05:09:03Z",
-      "last_commit_subject": "docs(claude-skills): update Last Updated badge to Jun 11, 2026 and version to v2.1.172",
+      "last_commit_at": "2026-06-11T06:35:17Z",
+      "last_commit_subject": "chore(badge): update claude-subagents Last Updated to Jun 11, 2026 and version to v2.1.173",
       "license_files": [
         "LICENSE"
       ],

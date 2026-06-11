@@ -25,7 +25,7 @@ import { header, ok, warn, fail, info, summary, line } from './lib/report.mjs';
 const SOURCES_DIR = 'external/sources';
 
 // First-party directories that must never contain secrets.
-const FIRST_PARTY_DIRS = ['rules', 'skills', 'hooks', 'mcp-configs', 'docs', 'scripts', 'sources', 'memory'];
+const FIRST_PARTY_DIRS = ['rules', 'skills', 'hooks', 'mcp-configs', 'docs', 'scripts', 'sources', 'memory', 'knowledge'];
 
 const SECRET_FILE_PATTERNS = [
   /^\.env(\..+)?$/i,

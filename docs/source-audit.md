@@ -5,7 +5,7 @@ Run: npm run sources:audit
 
 # Source Audit
 
-Generated: 2026-06-11T05:18:27.870Z
+Generated: 2026-06-11T13:16:13.694Z
 
 This audit records the trust status of each downloaded upstream source. Downloaded sources are untrusted reference material until reviewed here and are never imported or executed automatically.
 
@@ -22,7 +22,7 @@ This audit records the trust status of each downloaded upstream source. Download
 - URL: https://github.com/affaan-m/ECC.git
 - Target: external/sources/ecc
 - Status: downloaded
-- Commit: e4a0062d9b5806a7053a70c35116c9f371f4b5ce
+- Commit: fec84fcf19d1806232b21e38a80ac9fb595442dc
 - Branch: main
 - License files: LICENSE
 - Package files: package.json, pyproject.toml
@@ -42,7 +42,7 @@ This audit records the trust status of each downloaded upstream source. Download
 - URL: https://github.com/anthropics/claude-code.git
 - Target: external/sources/anthropic-claude-code
 - Status: downloaded
-- Commit: ca34f27543215fa4212872401dff00ba0ff0a034
+- Commit: 3a7c736101edbd00426fce4615e80b937f6467df
 - Branch: main
 - License files: LICENSE.md
 - Package files: none detected
@@ -62,7 +62,7 @@ This audit records the trust status of each downloaded upstream source. Download
 - URL: https://github.com/anthropics/claude-code-action.git
 - Target: external/sources/anthropic-claude-code-action
 - Status: downloaded
-- Commit: eee73e2ae5399c561de4ff038aa7b36a7aa991a7
+- Commit: 0f97b95b6536c26e5f6bd90faec370d41695beca
 - Branch: main
 - License files: LICENSE
 - Package files: package.json
@@ -122,7 +122,7 @@ This audit records the trust status of each downloaded upstream source. Download
 - URL: https://github.com/openai/codex.git
 - Target: external/sources/openai-codex
 - Status: downloaded
-- Commit: 598125109dd2e098486884d8fb563ebe90bc24da
+- Commit: 273a4aa4f2474b9d27a2654f5803d51f65ce3f43
 - Branch: main
 - License files: LICENSE
 - Package files: package.json
@@ -162,7 +162,7 @@ This audit records the trust status of each downloaded upstream source. Download
 - URL: https://github.com/anomalyco/opencode.git
 - Target: external/sources/opencode
 - Status: downloaded
-- Commit: bf05e8a1224d6560f7a441f70d09e0c77e50e931
+- Commit: 318dbe93ba9293708873a308729e02ec18707812
 - Branch: dev
 - License files: LICENSE
 - Package files: package.json
@@ -342,7 +342,7 @@ This audit records the trust status of each downloaded upstream source. Download
 - URL: https://github.com/shanraisshan/claude-code-best-practice.git
 - Target: external/sources/claude-code-best-practice
 - Status: downloaded
-- Commit: 245e8a0ef1122dd21ac856c5571ebad129b8899b
+- Commit: ef3195a6f4b521ae32171270be6ab10267559e1d
 - Branch: main
 - License files: LICENSE
 - Package files: none detected

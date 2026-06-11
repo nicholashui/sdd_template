@@ -3,7 +3,7 @@
 // Top-level command router for the sdd_template starter repository.
 //
 // Commands:
-//   bootstrap  doctor -> sources:download -> sources:audit -> security -> sync --dry-run -> test
+//   bootstrap  doctor -> sources:download -> sources:audit -> security -> knowledge:import -> sync --dry-run -> test
 //   create     scaffold a new downstream project (delegates to create-project.mjs)
 //   init       ensure the required directory structure exists
 //   format     normalize JSON manifests (pretty-print, stable)
@@ -33,6 +33,7 @@ const REQUIRED_DIRS = [
   'mcp-configs/optional',
   'memory/reflections',
   'reviews',
+  'knowledge',
   'suggestions/pending',
   'suggestions/approved',
   'suggestions/rejected',
@@ -47,6 +48,7 @@ const BOOTSTRAP_STEPS = [
   { name: 'sources:download', args: ['scripts/source-download.mjs'] },
   { name: 'sources:audit', args: ['scripts/source-audit.mjs'] },
   { name: 'security', args: ['scripts/security.mjs'] },
+  { name: 'knowledge:import', args: ['scripts/knowledge.mjs', 'import'] },
   { name: 'sync --dry-run', args: ['scripts/sync.mjs', '--dry-run'] },
   { name: 'test', args: resolveTestArgs },
 ];
@@ -129,6 +131,7 @@ function cmdFormat() {
     'hooks/manifest.json',
     'mcp-configs/manifest.json',
     'mcp-configs/minimal.json',
+    'knowledge/manifest.json',
   ];
   let count = 0;
   for (const t of jsonTargets) {
