@@ -6,7 +6,14 @@ Bootstrap complete.
 
 ## Latest update
 
-`npm run bootstrap` ran successfully on 2026-06-11 (Node v22.22.3, git 2.50.1).
+Re-audited against `project_starter.md` and the upstream `affaan-m/ecc`
+reference, then re-ran `npm run bootstrap` successfully on 2026-06-11
+(Node v22.22.3, git 2.50.1). Generated artifacts (`sources/source-lock.json`,
+`docs/source-audit.md`) were refreshed to current upstream commits — `ecc` is
+now pinned at `fec84fc`. The structure, manifests, and agent surface were
+verified consistent with both the spec and the ecc reference, and the 18
+generated agent-config files are byte-identical to a fresh `npm run sync`
+(no drift).
 
 ### Pipeline results
 
@@ -15,9 +22,9 @@ Bootstrap complete.
 | doctor | pass |
 | sources:download | pass |
 | sources:audit | pass |
-| security | pass |
+| security | pass (1 advisory) |
 | sync --dry-run | pass |
-| test | pass (19/19) |
+| test | pass (22/22) |
 
 ### Sources
 
