@@ -3,9 +3,9 @@ Source: rules/, skills/, hooks/, mcp-configs/
 Run: npm run sync
 -->
 
-# sdd_template — Agent Instructions (AGENTS.md)
+# sdd_template — Trae Project Rules
 
-Shared, cross-agent instructions. Supported agents: Claude Code, Codex, Gemini CLI, Cursor, OpenCode, Grok Build, GitHub Copilot, Kiro, CodeBuddy, Trae, VS Code (Copilot), Zed, Qwen Code.
+Always-applied project rules for Trae. Edit `rules/` then run `npm run sync`.
 
 <!-- BEGIN MANAGED AGENT RULES -->
 # Constitution
@@ -88,4 +88,3 @@ Human approval is required before:
 - deleting files,
 - applying self-generated skill/rule changes.
 <!-- END MANAGED AGENT RULES -->
-

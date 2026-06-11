@@ -3,9 +3,9 @@ Source: rules/, skills/, hooks/, mcp-configs/
 Run: npm run sync
 -->
 
-# sdd_template — Agent Instructions (AGENTS.md)
+# sdd_template — Qwen Code Instructions
 
-Shared, cross-agent instructions. Supported agents: Claude Code, Codex, Gemini CLI, Cursor, OpenCode, Grok Build, GitHub Copilot, Kiro, CodeBuddy, Trae, VS Code (Copilot), Zed, Qwen Code.
+Qwen Code reads this file (`QWEN.md`) as project context. It mirrors the shared rules.
 
 <!-- BEGIN MANAGED AGENT RULES -->
 # Constitution

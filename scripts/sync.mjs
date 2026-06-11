@@ -32,8 +32,28 @@ import gemini from './adapters/gemini.mjs';
 import opencode from './adapters/opencode.mjs';
 import grokBuild from './adapters/grok-build.mjs';
 import copilot from './adapters/copilot.mjs';
+import kiro from './adapters/kiro.mjs';
+import codebuddy from './adapters/codebuddy.mjs';
+import trae from './adapters/trae.mjs';
+import vscode from './adapters/vscode.mjs';
+import zed from './adapters/zed.mjs';
+import qwen from './adapters/qwen.mjs';
 
-const ADAPTERS = [claude, cursor, codex, gemini, opencode, grokBuild, copilot];
+const ADAPTERS = [
+  claude,
+  cursor,
+  codex,
+  gemini,
+  opencode,
+  grokBuild,
+  copilot,
+  kiro,
+  codebuddy,
+  trae,
+  vscode,
+  zed,
+  qwen,
+];
 
 export function parseArgs(argv) {
   return {
@@ -71,7 +91,8 @@ function buildAgentsMd(projectName, rulesText) {
   return withHeader(
     `# ${projectName} — Agent Instructions (AGENTS.md)\n\n`
     + 'Shared, cross-agent instructions. Supported agents: Claude Code, Codex, '
-    + 'Gemini CLI, Cursor, OpenCode, Grok Build, GitHub Copilot.\n\n'
+    + 'Gemini CLI, Cursor, OpenCode, Grok Build, GitHub Copilot, Kiro, CodeBuddy, '
+    + 'Trae, VS Code (Copilot), Zed, Qwen Code.\n\n'
     + `${managedBlock(rulesText)}\n`,
   );
 }
@@ -89,7 +110,13 @@ function buildDocsAgents(projectName) {
     + '| Gemini CLI | `GEMINI.md`, `.gemini/settings.json` |\n'
     + '| OpenCode | `AGENTS.md`, `.opencode/instructions.md` |\n'
     + '| Grok Build | `AGENTS.md`, `.grok/instructions.md` |\n'
-    + '| GitHub Copilot | `.github/copilot-instructions.md` |\n\n'
+    + '| GitHub Copilot | `.github/copilot-instructions.md` |\n'
+    + '| Kiro | `.kiro/steering/' + projectName + '.md`, `.kiro/settings/mcp.json` |\n'
+    + '| CodeBuddy | `.codebuddy/rules/' + projectName + '.md` |\n'
+    + '| Trae | `.trae/rules/project_rules.md` |\n'
+    + '| VS Code (Copilot) | `.vscode/settings.json` |\n'
+    + '| Zed | `.zed/settings.json` |\n'
+    + '| Qwen Code | `QWEN.md` |\n\n'
     + '## Policy\n\n'
     + 'Downloaded upstream sources are reference material until audited in '
     + '`docs/source-audit.md`. They are never imported or executed automatically.\n\n'

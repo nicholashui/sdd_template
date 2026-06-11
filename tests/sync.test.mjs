@@ -26,6 +26,13 @@ test('planSync produces all expected outputs', () => {
     '.opencode/instructions.md',
     '.grok/instructions.md',
     '.github/copilot-instructions.md',
+    '.kiro/steering/sdd_template.md',
+    '.kiro/settings/mcp.json',
+    '.codebuddy/rules/sdd_template.md',
+    '.trae/rules/project_rules.md',
+    '.vscode/settings.json',
+    '.zed/settings.json',
+    'QWEN.md',
   ];
   for (const p of expected) {
     assert.ok(paths.includes(p), `missing planned output: ${p}`);

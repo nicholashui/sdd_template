@@ -1,0 +1,20 @@
+{
+  "_generatedBy": "sdd_template sync",
+  "_note": "Managed file. Edit rules/ then run `npm run sync`.",
+  "chat.promptFiles": true,
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "file": ".github/copilot-instructions.md"
+    }
+  ],
+  "github.copilot.chat.testGeneration.instructions": [
+    {
+      "file": ".github/copilot-instructions.md"
+    }
+  ],
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "Use conventional commit format: <type>: <description>. Keep the subject under 72 characters and explain why, not what."
+    }
+  ]
+}

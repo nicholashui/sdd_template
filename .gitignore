@@ -10,7 +10,10 @@ npm-debug.log*
 Thumbs.db
 *.swp
 .idea/
-.vscode/
+# .vscode/settings.json is a generated, managed agent config (kept in VCS).
+# Ignore other local VS Code files only.
+.vscode/*
+!.vscode/settings.json
 
 # Runtime / temp
 *.tmp
