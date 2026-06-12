@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a9" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="540" fill="#f8fafc"/>
+  <text x="450" y="38" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2933">Memory persistence &amp; continuous learning</text>
+  <text x="450" y="62" text-anchor="middle" font-size="14" fill="#64748b">The agent gets a little better every session instead of forgetting everything at /clear.</text>
+
+  <!-- Memory persistence cycle (left) -->
+  <text x="240" y="100" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">Memory across sessions</text>
+  <rect x="120" y="120" width="240" height="44" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="240" y="147" text-anchor="middle" font-size="12.5" fill="#1e3a8a">Stop / PreCompact hook saves state</text>
+  <rect x="120" y="200" width="240" height="44" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="240" y="227" text-anchor="middle" font-size="12.5" fill="#1e3a8a">session-data/*.md written</text>
+  <rect x="120" y="280" width="240" height="44" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="240" y="307" text-anchor="middle" font-size="12.5" fill="#1e3a8a">SessionStart hook reloads it</text>
+  <text x="240" y="360" text-anchor="middle" font-size="12" font-style="italic" fill="#64748b">what worked · what failed ·</text>
+  <text x="240" y="378" text-anchor="middle" font-size="12" font-style="italic" fill="#64748b">what's left to do</text>
+
+  <line x1="240" y1="164" x2="240" y2="198" stroke="#475569" stroke-width="1.8" marker-end="url(#a9)"/>
+  <line x1="240" y1="244" x2="240" y2="278" stroke="#475569" stroke-width="1.8" marker-end="url(#a9)"/>
+  <path d="M120,302 C70,302 70,142 118,142" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#a9)"/>
+  <text x="58" y="225" text-anchor="middle" font-size="11" fill="#94a3b8" transform="rotate(-90 58 225)">next day, pick up where you left off</text>
+
+  <!-- Continuous learning loop (right) -->
+  <text x="650" y="100" text-anchor="middle" font-size="16" font-weight="700" fill="#0f766e">Continuous learning v2</text>
+  <rect x="520" y="120" width="260" height="44" rx="10" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="650" y="147" text-anchor="middle" font-size="12.5" fill="#0f766e">repeated pattern observed (hooks)</text>
+  <rect x="520" y="196" width="260" height="44" rx="10" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="650" y="223" text-anchor="middle" font-size="12.5" fill="#0f766e">saved as an instinct (+ confidence)</text>
+  <rect x="520" y="272" width="260" height="44" rx="10" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="650" y="299" text-anchor="middle" font-size="12.5" fill="#0f766e">/evolve clusters instincts → skill</text>
+  <rect x="520" y="348" width="260" height="44" rx="10" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="650" y="375" text-anchor="middle" font-size="12.5" fill="#0f766e">new skill auto-loads next time</text>
+
+  <line x1="650" y1="164" x2="650" y2="194" stroke="#475569" stroke-width="1.8" marker-end="url(#a9)"/>
+  <line x1="650" y1="240" x2="650" y2="270" stroke="#475569" stroke-width="1.8" marker-end="url(#a9)"/>
+  <line x1="650" y1="316" x2="650" y2="346" stroke="#475569" stroke-width="1.8" marker-end="url(#a9)"/>
+  <path d="M780,370 C840,370 840,142 782,142" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#a9)"/>
+
+  <!-- commands strip -->
+  <rect x="120" y="420" width="660" height="96" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="140" y="446" font-size="14" font-weight="700" fill="#1f2933">Commands you'll use</text>
+  <text x="140" y="470" font-size="12.5" font-family="monospace" fill="#0f172a">/instinct-status   /instinct-import   /instinct-export   /evolve   /prune</text>
+  <text x="140" y="492" font-size="12.5" font-family="monospace" fill="#0f172a">/learn   /learn-eval   /skill-create   /save-session   /resume-session</text>
+  <text x="140" y="510" font-size="11.5" font-style="italic" fill="#94a3b8">Why a Stop hook (not UserPromptSubmit)? It runs once at session end — no latency on every prompt.</text>
+</svg>
