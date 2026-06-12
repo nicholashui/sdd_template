@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" fill="#f8fafc"/>
+  <text x="450" y="40" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2933">ECC architecture, top to bottom</text>
+  <text x="450" y="64" text-anchor="middle" font-size="14" fill="#64748b">Identity governs catalog; catalog is shaped by adapters; runtime enforces it during a session</text>
+
+  <!-- Layer 1 Identity -->
+  <rect x="120" y="86" width="660" height="78" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="140" y="112" font-size="17" font-weight="700" fill="#1e3a8a">1 · Identity &amp; Governance</text>
+  <text x="140" y="134" font-size="13" fill="#475569">SOUL.md (who ECC is) · RULES.md (must always / must never) · AGENTS.md + CLAUDE.md (instructions)</text>
+  <text x="140" y="153" font-size="13" fill="#475569">Five principles: Agent-First · Test-Driven · Security-First · Immutability · Plan-Before-Execute</text>
+
+  <!-- Layer 2 Catalog -->
+  <rect x="120" y="180" width="660" height="104" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="140" y="206" font-size="17" font-weight="700" fill="#0f766e">2 · Component Catalog (the reusable layer)</text>
+  <rect x="140" y="218" width="120" height="50" rx="8" fill="#fff" stroke="#0d9488"/><text x="200" y="240" text-anchor="middle" font-size="12" fill="#0f766e">agents/</text><text x="200" y="257" text-anchor="middle" font-size="11" fill="#64748b">64 specialists</text>
+  <rect x="266" y="218" width="120" height="50" rx="8" fill="#fff" stroke="#0d9488"/><text x="326" y="240" text-anchor="middle" font-size="12" fill="#0f766e">skills/</text><text x="326" y="257" text-anchor="middle" font-size="11" fill="#64748b">262 workflows</text>
+  <rect x="392" y="218" width="120" height="50" rx="8" fill="#fff" stroke="#0d9488"/><text x="452" y="240" text-anchor="middle" font-size="12" fill="#0f766e">commands/</text><text x="452" y="257" text-anchor="middle" font-size="11" fill="#64748b">84 slash entries</text>
+  <rect x="518" y="218" width="120" height="50" rx="8" fill="#fff" stroke="#0d9488"/><text x="578" y="240" text-anchor="middle" font-size="12" fill="#0f766e">rules/</text><text x="578" y="257" text-anchor="middle" font-size="11" fill="#64748b">common + lang</text>
+  <rect x="644" y="218" width="120" height="50" rx="8" fill="#fff" stroke="#0d9488"/><text x="704" y="240" text-anchor="middle" font-size="12" fill="#0f766e">mcp-configs/</text><text x="704" y="257" text-anchor="middle" font-size="11" fill="#64748b">connectors</text>
+
+  <!-- Layer 3 Adapters -->
+  <rect x="120" y="300" width="660" height="78" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="140" y="326" font-size="17" font-weight="700" fill="#6d28d9">3 · Harness Adapters &amp; Installer</text>
+  <text x="140" y="348" font-size="13" fill="#475569">install.sh / install.ps1 / npx ecc-install · manifests + install-plan.js + install-apply.js · state store</text>
+  <text x="140" y="367" font-size="13" fill="#475569">targets: .claude/ · .cursor/ · .codex/ · .opencode/ · .gemini/ · .zed/ · .github/ · .qwen/ · .codebuddy/</text>
+
+  <!-- Layer 4 Runtime -->
+  <rect x="120" y="394" width="660" height="92" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="140" y="420" font-size="17" font-weight="700" fill="#b45309">4 · Runtime &amp; Enforcement (during a session)</text>
+  <text x="140" y="442" font-size="13" fill="#475569">hooks/hooks.json → scripts/hooks/*.js (Node, cross-platform): SessionStart, PreToolUse, PostToolUse,</text>
+  <text x="140" y="461" font-size="13" fill="#475569">PreCompact, Stop · quality gates, secret detection, memory persistence, continuous-learning capture</text>
+  <text x="140" y="480" font-size="13" fill="#475569">observability + metrics → ecc CLI &amp; ECC 2.0 control plane (ecc2/, Rust)</text>
+
+  <line x1="450" y1="164" x2="450" y2="178" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="450" y1="284" x2="450" y2="298" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="450" y1="378" x2="450" y2="392" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <text x="450" y="520" text-anchor="middle" font-size="13" fill="#94a3b8">Each layer is independent — you can install only the parts you want.</text>
+</svg>

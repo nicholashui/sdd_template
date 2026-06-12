@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="900" height="470" fill="#f8fafc"/>
+  <text x="450" y="38" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2933">Skill vs. Command vs. Hook — when to reach for each</text>
+
+  <!-- Column headers -->
+  <rect x="40" y="70" width="260" height="360" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <rect x="320" y="70" width="260" height="360" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+  <rect x="600" y="70" width="260" height="360" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+
+  <text x="170" y="100" text-anchor="middle" font-size="18" font-weight="700" fill="#0f766e">SKILL</text>
+  <text x="450" y="100" text-anchor="middle" font-size="18" font-weight="700" fill="#6d28d9">COMMAND</text>
+  <text x="730" y="100" text-anchor="middle" font-size="18" font-weight="700" fill="#b45309">HOOK</text>
+
+  <text x="170" y="126" text-anchor="middle" font-size="12" font-style="italic" fill="#64748b">the durable unit</text>
+  <text x="450" y="126" text-anchor="middle" font-size="12" font-style="italic" fill="#64748b">the convenient trigger</text>
+  <text x="730" y="126" text-anchor="middle" font-size="12" font-style="italic" fill="#64748b">the automatic guardrail</text>
+
+  <!-- rows -->
+  <text x="56" y="160" font-size="12" font-weight="700" fill="#334155">Trigger</text>
+  <text x="56" y="180" font-size="12" fill="#475569">Invoked, auto-suggested,</text>
+  <text x="56" y="196" font-size="12" fill="#475569">or reused by agents</text>
+  <text x="336" y="160" font-size="12" font-weight="700" fill="#334155">Trigger</text>
+  <text x="336" y="180" font-size="12" fill="#475569">You type /name</text>
+  <text x="616" y="160" font-size="12" font-weight="700" fill="#334155">Trigger</text>
+  <text x="616" y="180" font-size="12" fill="#475569">A tool/session event</text>
+  <text x="616" y="196" font-size="12" fill="#475569">fires it (no typing)</text>
+
+  <text x="56" y="232" font-size="12" font-weight="700" fill="#334155">Lives in</text>
+  <text x="56" y="252" font-size="11.5" fill="#475569" font-family="monospace">skills/&lt;name&gt;/SKILL.md</text>
+  <text x="336" y="232" font-size="12" font-weight="700" fill="#334155">Lives in</text>
+  <text x="336" y="252" font-size="11.5" fill="#475569" font-family="monospace">commands/&lt;name&gt;.md</text>
+  <text x="616" y="232" font-size="12" font-weight="700" fill="#334155">Lives in</text>
+  <text x="616" y="252" font-size="11.5" fill="#475569" font-family="monospace">hooks/hooks.json</text>
+
+  <text x="56" y="288" font-size="12" font-weight="700" fill="#334155">Best for</text>
+  <text x="56" y="308" font-size="12" fill="#475569">Reusable, multi-step</text>
+  <text x="56" y="324" font-size="12" fill="#475569">workflows + domain</text>
+  <text x="56" y="340" font-size="12" fill="#475569">knowledge + codemaps</text>
+  <text x="336" y="288" font-size="12" font-weight="700" fill="#334155">Best for</text>
+  <text x="336" y="308" font-size="12" fill="#475569">Quick manual entry to</text>
+  <text x="336" y="324" font-size="12" fill="#475569">a workflow during</text>
+  <text x="336" y="340" font-size="12" fill="#475569">migration</text>
+  <text x="616" y="288" font-size="12" font-weight="700" fill="#334155">Best for</text>
+  <text x="616" y="308" font-size="12" fill="#475569">Enforcing things every</text>
+  <text x="616" y="324" font-size="12" fill="#475569">time: format, secret</text>
+  <text x="616" y="340" font-size="12" fill="#475569">scan, memory, gates</text>
+
+  <text x="56" y="376" font-size="12" font-weight="700" fill="#334155">Example</text>
+  <text x="56" y="396" font-size="12" fill="#0f766e">tdd-workflow,</text>
+  <text x="56" y="412" font-size="12" fill="#0f766e">security-review</text>
+  <text x="336" y="376" font-size="12" font-weight="700" fill="#334155">Example</text>
+  <text x="336" y="396" font-size="12" fill="#6d28d9">/plan, /code-review,</text>
+  <text x="336" y="412" font-size="12" fill="#6d28d9">/build-fix</text>
+  <text x="616" y="376" font-size="12" font-weight="700" fill="#334155">Example</text>
+  <text x="616" y="396" font-size="12" fill="#b45309">PostToolUse prettier,</text>
+  <text x="616" y="412" font-size="12" fill="#b45309">SessionStart load ctx</text>
+
+  <text x="450" y="452" text-anchor="middle" font-size="13" fill="#94a3b8">ECC direction: skills-first. Commands remain for compatibility; new logic should land in skills.</text>
+</svg>

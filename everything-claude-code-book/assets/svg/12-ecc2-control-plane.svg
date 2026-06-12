@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a12" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="38" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2933">ECC 2.0 control plane (ecc2/, Rust — alpha)</text>
+  <text x="450" y="62" text-anchor="middle" font-size="14" fill="#64748b">The layer above individual harness installs: manage many agent sessions from one surface.</text>
+
+  <!-- control pane -->
+  <rect x="300" y="84" width="300" height="86" rx="14" fill="#1f2933"/>
+  <text x="450" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">ecc2 control plane</text>
+  <text x="450" y="138" text-anchor="middle" font-size="11.5" fill="#cbd5e1">TUI dashboard · daemon loop</text>
+  <text x="450" y="156" text-anchor="middle" font-size="11.5" fill="#cbd5e1">SQLite session store · risk scoring</text>
+
+  <!-- sessions -->
+  <g>
+    <rect x="80" y="240" width="200" height="100" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="180" y="266" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">session A · running</text>
+    <text x="180" y="288" text-anchor="middle" font-size="11.5" fill="#475569">agent: claude</text>
+    <text x="180" y="306" text-anchor="middle" font-size="11.5" fill="#475569">worktree: feature-x</text>
+    <text x="180" y="326" text-anchor="middle" font-size="11.5" fill="#16a34a">risk: low</text>
+  </g>
+  <g>
+    <rect x="350" y="240" width="200" height="100" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="450" y="266" text-anchor="middle" font-size="13" font-weight="700" fill="#b45309">session B · stalled</text>
+    <text x="450" y="288" text-anchor="middle" font-size="11.5" fill="#475569">agent: codex</text>
+    <text x="450" y="306" text-anchor="middle" font-size="11.5" fill="#475569">worktree: refactor</text>
+    <text x="450" y="326" text-anchor="middle" font-size="11.5" fill="#d97706">risk: review needed</text>
+  </g>
+  <g>
+    <rect x="620" y="240" width="200" height="100" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <text x="720" y="266" text-anchor="middle" font-size="13" font-weight="700" fill="#15803d">session C · resumable</text>
+    <text x="720" y="288" text-anchor="middle" font-size="11.5" fill="#475569">agent: claude</text>
+    <text x="720" y="306" text-anchor="middle" font-size="11.5" fill="#475569">worktree: docs</text>
+    <text x="720" y="326" text-anchor="middle" font-size="11.5" fill="#16a34a">risk: low</text>
+  </g>
+
+  <line x1="380" y1="170" x2="200" y2="238" stroke="#475569" stroke-width="1.6" marker-end="url(#a12)"/>
+  <line x1="450" y1="170" x2="450" y2="238" stroke="#475569" stroke-width="1.6" marker-end="url(#a12)"/>
+  <line x1="520" y1="170" x2="700" y2="238" stroke="#475569" stroke-width="1.6" marker-end="url(#a12)"/>
+
+  <!-- commands -->
+  <rect x="80" y="380" width="740" height="98" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="100" y="406" font-size="14" font-weight="700" fill="#1f2933">Try the alpha (from ecc2/)</text>
+  <text x="100" y="430" font-size="12" font-family="monospace" fill="#0f172a">cargo run -- dashboard    cargo run -- start --task "..." --agent claude --worktree</text>
+  <text x="100" y="450" font-size="12" font-family="monospace" fill="#0f172a">cargo run -- sessions    status latest    stop &lt;id&gt;    resume &lt;id&gt;    daemon</text>
+  <text x="100" y="470" font-size="11.5" font-style="italic" fill="#94a3b8">Alpha quality: builds &amp; runs locally, but not the finished GA product. Operator CLI also lives in scripts/ecc.js.</text>
+</svg>

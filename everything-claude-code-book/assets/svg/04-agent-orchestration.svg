@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a4" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#475569"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" fill="#f8fafc"/>
+  <text x="450" y="38" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2933">Agent orchestration: sequential phases + model routing</text>
+  <text x="450" y="62" text-anchor="middle" font-size="14" fill="#64748b">One clear input → one clear output per phase. Store intermediate outputs in files. /clear between phases.</text>
+
+  <!-- Orchestrator -->
+  <rect x="350" y="84" width="200" height="56" rx="12" fill="#1f2933"/>
+  <text x="450" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Main agent</text>
+  <text x="450" y="128" text-anchor="middle" font-size="11.5" fill="#cbd5e1">(orchestrator)</text>
+
+  <!-- Phases -->
+  <g>
+    <rect x="60" y="190" width="200" height="92" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="160" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">1 · RESEARCH</text>
+    <text x="160" y="238" text-anchor="middle" font-size="11.5" fill="#475569">code-explorer / docs-lookup</text>
+    <text x="160" y="256" text-anchor="middle" font-size="11.5" fill="#475569">→ research-summary.md</text>
+    <text x="160" y="274" text-anchor="middle" font-size="11" fill="#2563eb">model: Haiku</text>
+  </g>
+  <g>
+    <rect x="280" y="190" width="200" height="92" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="380" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="#6d28d9">2 · PLAN</text>
+    <text x="380" y="238" text-anchor="middle" font-size="11.5" fill="#475569">planner / architect</text>
+    <text x="380" y="256" text-anchor="middle" font-size="11.5" fill="#475569">→ plan.md</text>
+    <text x="380" y="274" text-anchor="middle" font-size="11" fill="#7c3aed">model: Opus</text>
+  </g>
+  <g>
+    <rect x="500" y="190" width="200" height="92" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+    <text x="600" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="#0f766e">3 · IMPLEMENT</text>
+    <text x="600" y="238" text-anchor="middle" font-size="11.5" fill="#475569">tdd-guide</text>
+    <text x="600" y="256" text-anchor="middle" font-size="11.5" fill="#475569">→ code + tests</text>
+    <text x="600" y="274" text-anchor="middle" font-size="11" fill="#0f766e">model: Sonnet</text>
+  </g>
+  <g>
+    <rect x="720" y="190" width="120" height="92" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="780" y="216" text-anchor="middle" font-size="13" font-weight="700" fill="#b45309">4 · REVIEW</text>
+    <text x="780" y="238" text-anchor="middle" font-size="11" fill="#475569">code-reviewer</text>
+    <text x="780" y="256" text-anchor="middle" font-size="11" fill="#475569">security-reviewer</text>
+    <text x="780" y="274" text-anchor="middle" font-size="11" fill="#b45309">→ review.md</text>
+  </g>
+
+  <line x1="380" y1="140" x2="160" y2="188" stroke="#475569" stroke-width="1.6" marker-end="url(#a4)"/>
+  <line x1="420" y1="140" x2="380" y2="188" stroke="#475569" stroke-width="1.6" marker-end="url(#a4)"/>
+  <line x1="480" y1="140" x2="600" y2="188" stroke="#475569" stroke-width="1.6" marker-end="url(#a4)"/>
+  <line x1="520" y1="140" x2="780" y2="188" stroke="#475569" stroke-width="1.6" marker-end="url(#a4)"/>
+
+  <line x1="260" y1="236" x2="278" y2="236" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#a4)"/>
+  <line x1="480" y1="236" x2="498" y2="236" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#a4)"/>
+  <line x1="700" y1="236" x2="718" y2="236" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#a4)"/>
+
+  <!-- Iterative retrieval box -->
+  <rect x="60" y="320" width="780" height="96" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="80" y="346" font-size="15" font-weight="700" fill="#1f2933">Iterative retrieval (the sub-agent context problem)</text>
+  <text x="80" y="370" font-size="13" fill="#475569">A sub-agent only knows the literal query, not the purpose. So the orchestrator passes objective context, then</text>
+  <text x="80" y="390" font-size="13" fill="#475569">evaluates each return and asks follow-up questions before accepting it. Loop until sufficient (max ~3 cycles).</text>
+  <text x="80" y="408" font-size="12.5" font-style="italic" fill="#0d9488">Skills supply conventions; agents execute with limited tools; outputs become the next phase's inputs.</text>
+
+  <!-- Model routing legend -->
+  <rect x="60" y="440" width="780" height="78" rx="12" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="80" y="466" font-size="14" font-weight="700" fill="#1f2933">Model routing rule of thumb</text>
+  <text x="80" y="490" font-size="13" fill="#475569"><tspan fill="#2563eb" font-weight="700">Haiku</tspan> = search / simple edits / docs &#8226; <tspan fill="#0f766e" font-weight="700">Sonnet</tspan> = default for 90% of coding &#8226; <tspan fill="#7c3aed" font-weight="700">Opus</tspan> = architecture / security / hard debugging</text>
+  <text x="80" y="510" font-size="12.5" fill="#94a3b8">Escalate to Opus only when the first attempt failed, the task spans 5+ files, or correctness is critical.</text>
+</svg>
