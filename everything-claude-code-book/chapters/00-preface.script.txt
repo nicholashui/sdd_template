@@ -1,0 +1,41 @@
+Chapter zero. Preface and quick start.
+
+Let's begin with the two-minute version. You use an AI coding assistant. Maybe it's Claude Code, maybe Cursor, maybe Codex or OpenCode, something along those lines. Out of the box, it's a smart but forgetful generalist. It re-explores your codebase every single session. It forgets the conventions you taught it yesterday. It happily commits a stray debug log, and every now and then it does something risky, because nothing was there to stop it.
+
+Everything Claude Code, or ECC, is a single reusable layer you drop in front of that assistant to fix all of that at once. Here's what it gives the assistant.
+
+First, specialists to delegate to. There are sixty-four agents, including a planner, a code reviewer, a security reviewer, a build-error resolver, and many more.
+
+Second, repeatable workflows. There are two hundred and sixty-two skills, covering things like test-driven development, security review, and API design.
+
+Third, automatic guardrails. These are hooks that format your code, scan for secrets, and save your context.
+
+Fourth, always-on standards. These are rules covering immutability, eighty percent test coverage, conventional commits, and no hardcoded secrets.
+
+Fifth, memory that survives between sessions, plus a learning loop that turns repeated patterns into brand-new skills.
+
+And sixth, security, including sandboxing guidance and a built-in scanner called AgentShield.
+
+And it does all of this across many tools. You author it once, and ECC translates it into the native config format of each harness.
+
+If you remember just one sentence from this whole book, make it this one. ECC turns a clever-but-generic AI assistant into a disciplined senior engineer with a team of specialists, a memory, and a security guard.
+
+Now let's be clear about what ECC is not. It is not elliptic curve cryptography. The short repository name simply redirects to Everything Claude Code. It is not a model or an API. It runs on top of the AI tool you already use. And it is not locked to Claude. Despite the name, it supports Cursor, Codex, OpenCode, Gemini, Zed, GitHub Copilot, and more.
+
+Let's try it in under five minutes, using Claude Code as our example. Full installation, alternatives, and other harnesses are covered later, but this is the fastest happy path.
+
+Step one. Inside Claude Code, add the marketplace and install the plugin. You add the marketplace pointing at the ECC repository, then install the ecc plugin.
+
+Step two. Add the rules you care about. Plugins can't ship rules, so you copy them manually. You clone the ECC repository, make a rules directory under your Claude config, and copy in the common rules plus the rules for your stack, like TypeScript.
+
+Step three. Use it. You run the plan command with a description like, add user authentication with OAuth.
+
+That's the whole loop. You describe your intent, ECC plans it, delegates to the right specialists, enforces tests and standards, and remembers what happened.
+
+Not sure what to install? You can ask the bundled advisor from any project. There's a consult command that recommends what to set up, for example, asking it about security reviews and targeting Claude.
+
+Now, here is the golden rule of installing ECC. There are two install paths: the plugin, and the manual installer. Pick exactly one. The single most common broken setup comes from stacking them, installing the plugin and then running the full installer, which duplicates skills and hooks. We'll hammer this point again later, but internalize it now.
+
+Here's how the rest of the book flows. Part one is orientation, the what and the why. Part two gets it running, covering install and concepts. Part three covers the building blocks, from agents all the way to MCP. Part four is about operating ECC through daily workflows. Part five covers safety and advanced topics, including security and ECC two-point-oh. And part six is reference, with troubleshooting and a glossary.
+
+Turn the page, and let's understand why ECC exists, and the philosophy that shaped every file in it.

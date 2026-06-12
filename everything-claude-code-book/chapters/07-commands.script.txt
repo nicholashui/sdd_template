@@ -1,0 +1,33 @@
+Chapter seven. Commands.
+
+Let's talk about what commands are, and where they're going. A command is a slash entry you type into your harness, like plan, code-review, or build-fix. Each maps to a Markdown file and triggers a workflow.
+
+But here's the important framing: commands are a compatibility layer. ECC is deliberately migrating durable logic into skills, and treating the commands directory as maintained slash-entry compatibility during that migration. Retired short names, like the old test-driven-development and evaluation commands, have moved into a legacy-shims folder for explicit opt-in only.
+
+So why do commands still exist? Because typing a short command is faster and more discoverable than describing a whole workflow, and because cross-harness parity sometimes needs a named entry. Think of commands as ergonomic shortcuts over the real engine, which is skills. One naming note: the plugin install uses the canonical namespaced form, with an ecc prefix, while the manual install keeps the shorter slash form. Both reach the same logic.
+
+Let's go through the command cheat sheet. The repository ships a quick-reference file, and the commands group by job. Exact availability depends on your install and harness, so type a slash to see what's live.
+
+In the core workflow, there's plan, which restates requirements, assesses risks, and writes a step-by-step plan, then waits for your confirmation before touching code. There's code-review, a full quality, security, and maintainability review of changed files. There's build-fix, which detects and fixes build errors and delegates to the right resolver. There's quality-gate, which runs the verification gate against project standards. And there's refactor-clean, which removes dead code and consolidates duplicates.
+
+For testing, there's a test-coverage command, plus language-specific test entries for Go, Rust, Kotlin, C-plus-plus, React, and Flutter. The universal test-driven-development command now lives in legacy shims, and you should prefer the test-driven-development skill.
+
+For code review, there are per-language commands for Python, Go, Rust, Kotlin, C-plus-plus, React, FastAPI, and Flutter. For build fixing, there are per-language commands for Go, Rust, Kotlin, C-plus-plus, Gradle, React, and Flutter.
+
+For planning and multi-agent work, there's plan, a product-requirements plan, the multi-plan, multi-execute, multi-backend, multi-frontend, and multi-workflow commands, and an orchestration family for building an MVP, adding a feature, fixing a defect, changing a feature, and refining code.
+
+For sessions and context, there's save-session, resume-session, a sessions list, checkpoint, an aside command for a quick side question without losing your task, and context-budget.
+
+For learning and improvement, there's learn, learn-eval, evolve, promote, instinct status, instinct import and export, skill-create, skill-health, rules-distill, prune, and projects.
+
+For docs and research, there's a docs lookup command, an update-docs command, and an update-codemaps command. For loops and automation, there are loop-start, loop-status, a REPL command, and a long-running loop command. For harness and infrastructure, there are commands for harness auditing, model routing, process management, cost reporting, auto-updating, turning behaviors into hooks, and project initialization. And for the pull-request workflow, there are commands to open a PR, review a PR, analyze PR tests, and a family that walks from product requirements through planning, implementation, commit, and PR.
+
+Here's a quick decision guide drawn from the quick-reference, a handy mental flowchart. Starting a new feature? Run plan first, then the test-driven-development skill. Code just written? Run code-review. Build broken? Run build-fix. Need live docs? Run the docs command with a library name. Session about to end? Run save-session, or the learn-eval command. Resuming the next day? Run resume-session. Context getting heavy? Run context-budget, then checkpoint. Want to capture what you learned? Run learn-eval, then evolve. And running repeated tasks? Run loop-start.
+
+A quick note on the legacy shims and what changed. Some old favorites were retired as standalone short commands and now point you at the skill. The old test-driven-development command points to the test-driven-development skill. The old end-to-end command points to the end-to-end testing skill. The old evaluation command points to the evaluation-harness skill. The old verify command points to the verification-loop skill. And the old orchestrate command points to the multiplexed-workflows skill or the multi-workflow command. These live in the legacy-shims folder and are opt-in. If your muscle memory wants the old name, copy that single shim, but know the skill is the real thing.
+
+What about authoring a command? Commands are the simplest block: a Markdown file with a description in the header and the prompt and instructions in the body. But per ECC's policy, only add or update a command when a shim is genuinely needed, for migration or cross-harness parity. Otherwise, put the logic in a skill. Then validate it with the provided script.
+
+So, the key takeaways. Commands are typed slash shortcuts, and because ECC is skills-first, they're a compatibility layer. The plugin form uses an ecc prefix, the manual form is the plain slash, and both hit the same engine. The quick-reference file groups commands by job, and you can type a slash to see what's installed. Retired short names live in the legacy-shims folder and point back to skills. And you should prefer creating skills over new commands.
+
+Next: the automations that fire without you, hooks.
