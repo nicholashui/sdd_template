@@ -1,0 +1,33 @@
+第七章。指令，Commands。
+
+我们讲一下 commands 是什么，以及它们要去哪。一个 command 是你打进你框架的斜杠项目，例如 plan、code-review，或者 build-fix。每一个对应到一个 Markdown 文件，并且触发一个工作流程。
+
+但这里有个重要的定位：commands 是一个兼容层。ECC 刻意把耐用的逻辑迁移进 skills，并且在那个迁移过程中，把 commands 目录当成受维护的斜杠项目兼容。已退役的短名，例如旧的测试驱动开发和评估 commands，已经搬进一个 legacy-shims 文件夹，只给人明确选择加入。
+
+那为什么 commands 仍然存在呢？因为打一个短 command，比描述整个工作流程更快、更容易被发现，也因为跨框架的对等有时需要一个有名的项目。把 commands 想成真正引擎之上的符合人体工学的捷径，而真正的引擎就是 skills。一个命名提示：插件安装用标准的命名空间形式，带一个 ecc 前缀，而手动安装就保留比较短的斜杠形式。两者都到达同样的逻辑。
+
+我们过一遍 command 的速查表。Repo 内置一个快速参考文件，而那些 commands 按工作分组。确切有哪些可用，取决于你的安装和框架，所以打一个斜杠去看一下有什么实时可用。
+
+在核心工作流程，有 plan，它会重述需求、评估风险，并且写一个逐步的计划，然后在动代码之前等你确认。有 code-review，是对已改动文件的一次完整质量、安全和可维护性审查。有 build-fix，它会检测和修复构建错误，并且委派给合适的 resolver。有 quality-gate，它会根据项目标准执行验证关卡。还有 refactor-clean，它会移除死代码并且整合重复的部分。
+
+至于测试，有一个 test-coverage command，再加 Go、Rust、Kotlin、C++、React 和 Flutter 的特定语言测试项目。通用的测试驱动开发 command 现在住在 legacy shims，而你应该偏向用测试驱动开发 skill。
+
+至于代码审查，有给 Python、Go、Rust、Kotlin、C++、React、FastAPI 和 Flutter 的各语言 commands。至于构建修复，有给 Go、Rust、Kotlin、C++、Gradle、React 和 Flutter 的各语言 commands。
+
+至于规划和多代理工作，有 plan、一个产品需求计划、multi-plan、multi-execute、multi-backend、multi-frontend 和 multi-workflow 这些 commands，和一个编排家族，负责构建一个 MVP、加入一个功能、修一个缺陷、改一个功能，和精修代码。
+
+至于会话和上下文，有 save-session、resume-session、一个 sessions 清单、checkpoint、一个 aside command，让你快速问一条题外问题又不会丢失你的任务，和 context-budget。
+
+至于学习和改进，有 learn、learn-eval、evolve、promote、instinct status、instinct import 和 export、skill-create、skill-health、rules-distill、prune，和 projects。
+
+至于文档和研究，有一个文档查询 command、一个 update-docs command，和一个 update-codemaps command。至于循环和自动化，有 loop-start、loop-status、一个 REPL command，和一个长时间运行的循环 command。至于框架和基础设施，有负责框架审计、模型路由、进程管理、成本报告、自动更新、把行为变成 hooks，和项目初始化的 commands。而至于拉取请求工作流程，有负责开一个 PR、审查一个 PR、分析 PR 测试的 commands，和一个从产品需求一路经过规划、实现、commit 到 PR 的家族。
+
+这里有一个从快速参考整理出来的快速决策指南，一个好用的心智流程图。开始一个新功能？先执行 plan，然后测试驱动开发 skill。刚刚写完代码？执行 code-review。构建坏了？执行 build-fix。需要实时文档？用一个库名执行文档 command。会话快完了？执行 save-session，或者 learn-eval command。第二天恢复？执行 resume-session。上下文越来越重？执行 context-budget，然后 checkpoint。想捕捉你学到的东西？执行 learn-eval，然后 evolve。而在执行重复的任务？执行 loop-start。
+
+快速讲一讲 legacy shims 和改了什么。有些旧爱将，被退役成独立的短 commands，现在会指你回到那个 skill。旧的测试驱动开发 command 指向测试驱动开发 skill。旧的端到端 command 指向端到端测试 skill。旧的评估 command 指向评估框架 skill。旧的 verify command 指向验证循环 skill。而旧的 orchestrate command 指向多路复用工作流程 skill 或者 multi-workflow command。这些住在 legacy-shims 文件夹，是可选择加入的。如果你的肌肉记忆想要回那个旧名，就复制那一个单一的垫片，但要知道那个 skill 才是真正的东西。
+
+那写一个 command 又怎样呢？Commands 是最简单的模块：一个 Markdown 文件，头部有一段描述，正文有提示和指令。但按照 ECC 的策略，只在真的需要一个垫片的时候才加入或者更新一个 command，也就是为了迁移或者跨框架对等。否则，把逻辑放进一个 skill。然后用提供的脚本去验证它。
+
+那么，重点精华。Commands 是打出来的斜杠捷径，而因为 ECC 是技能优先，它们是一个兼容层。插件形式用一个 ecc 前缀，手动形式是干巴巴的斜杠，而两者都打中同一个引擎。快速参考文件把 commands 按工作分组，而你可以打一个斜杠去看一下装了什么。已退役的短名住在 legacy-shims 文件夹，并且指回 skills。而你应该偏向创建 skills，多过创建新的 commands。
+
+下一个：不用你出手就会启动的自动化，hooks。

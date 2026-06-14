@@ -1,0 +1,22 @@
+第十三章。持续学习。
+
+我们从它解决的问题开始讲。你们全部都试过这样东西：你连续三天为同一样东西纠正助手。它撞到同一个 bug，你给它同一个变通做法，它又忘记，然后你又再来过。这就浪费了 token、浪费了上下文，也浪费了时间。ECC 的答案是这样：当助手发现了一些不简单的东西，一个调试技巧、一个项目特有的怪癖、一个变通做法，它就应该把那样东西存成可重用的知识，这样下次那个模式就会自动加载。这个目录是由你自己的使用成长出来的。
+
+值得提一下，不要把记忆和学习混淆，因为它们不同。记忆，也就是之前那一章讲的，是这个项目在会话之间携带的状态。持续学习就是关于耐用的模式，被抽取成 instincts 和 skills，并且应用在跨会话和跨项目。
+
+ECC 内置了这样东西的两代，而你应该知道你在用哪一代。第一代用一个停止 hook，把模式抽取成学到的 skills。它简单而且经过验证。第二代是基于 instinct 的，有信心评分，再加引入、导出，和演化。只在你明确地想要那个旧版学到 skill 的流程时，才保留第一代。否则，偏向用第二代。第二代系统是推荐的路线。
+
+我们讲一下 instincts，也就是学习的单位。一个 instinct 是一小块有评分的学到行为：一个观察加一个动作，连同一个信心评分和支持的证据和示例。Instincts 在你工作的时候静静地累积，因为观察 hooks 捕捉工具使用的信号，而你用 commands 来管理它们。有一个 instinct-status command，去显示你学到的 instincts 和它们的信心评分，包括项目级别和全局。有一个 instinct-import command，去从一个文件、一个 URL，或者一个队友引入 instincts。有一个 instinct-export command，去分享你那些。有一个 prune command，去删除已过期的待定 instincts，它们有一个三十天的存活时间。有一个 promote command，去把项目范围的 instincts 提升到全局范围。还有一个 projects command，去列出已知的项目和它们的 instinct 统计。Instincts 是有范围的：一个在一个项目学到的 instinct，在你把它提升到全局之前，会保持在项目范围。这样就阻止了项目的怪癖泄露得到处都是，同时仍然让真正普遍的教训毕业。顺带讲一下内部运作，instinct 存储和会话记忆是分开的，所以清除你的会话，不会抹走你学到的东西。
+
+
+单个的 instincts 有用，但真正的魔法，是把相关的 instincts 聚集成一个全新的 skill，而这个就是 evolve command 做的事。流程是这样：一个 learn command 从当前会话抽取可重用的模式，一个 learn-and-evaluate command 抽取模式并且在保存之前自我评估它们的质量，而 evolve command 分析你学到的 instincts 并且建议演化了的 skill 结构。从头到尾，循环是：一个重复的模式被 hooks 观察到，它被存成一个带信心评分的 instinct，evolve command 把相关的 instincts 聚集成一个新 skill，而那个新 skill 在下次情况相符时自动加载。这就是一个通用的助手怎样变成你的助手：你不断教它的东西，凝固成永远都在的 skills。
+
+有一条互补的路线，不用等 instincts 累积：从你的 git 历史生成 skills。你执行 skill-create command，去分析当前 repo 的 commit 历史并且产出 skill 文件，而你可以加一个标志，顺便为第二代学习系统生成 instincts。它在本机读取你的 commit 历史，并且把模式抽取成即用的 skills。对于超大型 repo、团队分享，或者自动拉取请求，有一条进阶的 GitHub App 路线，但 skill-create command 在没有外部服务的情况下涵盖了常见的情况。你也可以审计你累积知识的健康状况：有一个带分析的 skill-health 仪表板、一个 skill-stocktake 去审计 skills 和 commands 的质量，和一个 rules-distill command，会扫描 skills、抽取横跨各处的原则，并且把它们提炼成 rules。
+
+值得重复讲一下，为什么捕捉在停止事件运行，而不是在每一个提示。这是一个深思熟虑的设计选择。学习捕捉在会话结束时运行一次，而不是在每一个消息，因为逐个消息运行它，会为每一个提示加上延迟。停止运行一次，轻量，不碍你手脚。观察 hooks 确实会在会话期间捕捉轻量的信号，是异步而且有一个短超时，但沉重的抽取是在结尾发生的。
+
+你不用第一天就做完这些。这里有一个合理的采用斜坡。第一个星期，只工作。让 instincts 累积，偶尔执行 instinct-status 去看一下它在留意什么。第二个星期，在扎实的会话结尾，执行 learn-and-evaluate command，然后保存会话。第三个星期，执行 evolve command 去把一群群 instincts 变成 skills，并且执行 skill-health 去检查质量。而持续地，把真正普遍的教训提升到全局、导出 instincts 和队友分享，并且 prune 去保持整洁。
+
+那么，重点精华。持续学习把重复的纠正，变成耐用、自动加载的知识。偏向用第二代系统，有 instincts 和信心评分，多过第一代的停止 hook 流程。用 status、import、export、prune 和 promote commands 来管理 instincts，并且记住 instincts 在被提升之前是项目范围的。Evolve command 把 instincts 聚集成新 skills，而 skill-create command 开采你的 git 历史。而捕捉在停止 hook 运行，去避免逐个提示的延迟。
+
+下一个：让以上一切变得又快又便宜。
