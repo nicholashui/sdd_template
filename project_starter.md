@@ -20,7 +20,7 @@ Use project_starter.md as the source-of-truth implementation contract.
 
 Create the new project at:
 
-<OUTPUT_PATH>
+Current Directory
 
 The project purpose is:
 
@@ -82,7 +82,7 @@ Create a new project named <PROJECT_NAME> based on <PATH_TO_PROJECT_STARTER_MD>.
 
 Create it at:
 
-<OUTPUT_PATH>
+Current Directory
 
 Use project_starter.md as the complete implementation contract.
 
@@ -102,7 +102,6 @@ When generating a downstream project, a coding agent may receive these variables
 | Variable | Description | Default |
 |---|---|---|
 | `PROJECT_NAME` | Name of the generated project | `project_starter_generated` |
-| `OUTPUT_PATH` | Target directory for the generated project | `./project_starter_generated` |
 | `PROJECT_PURPOSE` | Short description of the generated project | `AI coding-agent starter repository` |
 | `STACK` | Primary technology stack | `Node.js 20+, plain JavaScript, no runtime dependencies for bootstrap scripts` |
 | `DOWNLOAD_SOURCES` | Whether enabled upstream sources should be downloaded | `true` |
@@ -113,8 +112,6 @@ When generating a downstream project, a coding agent may receive these variables
 If a required value is missing, the coding agent should use the default.
 
 ## Existing Output Directory Rule
-
-If `OUTPUT_PATH` already exists and is non-empty, the coding agent must stop and ask for permission before overwriting or updating it.
 
 Allowed exception:
 

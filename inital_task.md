@@ -2,6 +2,10 @@ Create a new project named `sdd_template` in current directory based on ./projec
 
 Use ./project_starter.md as the complete boilerplate implementation contract.
 
+Create the new project at:
+
+Current Directory
+
 Project type:
 
 AI coding-agent starter repository
